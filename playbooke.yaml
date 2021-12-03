@@ -50,6 +50,10 @@
       src: /root/wsr-skillcloud/nginx.conf
       dest: /skillcloud-nginx
 
+  - name: Stop and Start ssh
+    service:
+      name: ssh
+      state: restarted
  
   - name: Reboot 
     reboot:
