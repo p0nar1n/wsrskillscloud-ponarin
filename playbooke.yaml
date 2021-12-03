@@ -31,10 +31,25 @@
   - name: Install docker-compose
     pip:
       name: docker-compose
-  
-  - name: Creates directory for web
+
+  - name: create derectory
     file:
-            path: /skillcloud-nginx
-            state: directory
+      path: /skillcloud-nginx
+      state: directory
+
+  - name: copying file index.html
+    copy:
+      src: /root/wsr-skillcloud/index.html
+      dest: /skillcloud-nginx
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: copying file nginx.conf
+    copy:
+      src: /root/wsr-skillcloud/nginx.conf
+      dest: /skillcloud-nginx
+
+ 
   - name: Reboot 
     reboot:
